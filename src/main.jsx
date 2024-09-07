@@ -3,13 +3,13 @@ import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/global";
 import theme from "./styles/theme";
-import { App } from "./App.jsx";
+import { Routes } from "./routes/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <App />
+      <Routes />
     </ThemeProvider>    
   </StrictMode>
 );

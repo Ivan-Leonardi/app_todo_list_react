@@ -29,8 +29,15 @@ export const Form = styled.form`
     font-size: 18px;
     font-weight: 400;
     color: ${({theme}) => theme.COLORS.GRAY_DARK};
-    margin-bottom: 36px;
+    margin: 8px 0px 36px;
+
+    > a {
+    color: ${({theme}) => theme.COLORS.GRAY_DARK};
+    font-weight: 500;
   }
+  }
+
+  
 `;
 
 export const BackgroundIMG = styled.div`
