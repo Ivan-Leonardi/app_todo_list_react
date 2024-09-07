@@ -14,9 +14,8 @@ export default createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, button, textarea{
-        /* font-family: 'Roboto Slab', serif; */
-        font-family: Arial, Helvetica, sans-serif;
+    body, input, button, textarea{        
+        font-family: Poppins, sans-serif;
         font-size: 16px;
         outline: none;        
     }
@@ -28,7 +27,7 @@ export default createGlobalStyle`
     button, a{
         font-weight: bold;
         cursor: pointer;
-        transition: filter 0.2s;
+        transition: filter 0.3s;
     }
 
     button:hover, a:hover{

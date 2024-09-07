@@ -1,7 +1,9 @@
+import { Register } from "./pages/Register";
+
 export function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <Register />
     </div>
   )
 }
