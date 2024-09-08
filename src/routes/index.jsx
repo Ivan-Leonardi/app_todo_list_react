@@ -1,12 +1,24 @@
-import { BrowserRouter } from "react-router-dom";
-import { AuthRoutes } from "./auth.routes";
-import { Dashboard } from "./dashboard.routes";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Dashboard } from "../pages/Dashboard"
+import { Register } from "../pages/Register";
+import { PrivateRoute } from "./private.routes";
+import { Login } from "../pages/Login";
 
-export function Routes() {
-    return  (
-        <BrowserRouter>
-        <AuthRoutes />
-        <Dashboard />
-        </BrowserRouter>
-    )
+export function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Login />} />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <Dashboard/>
+            </PrivateRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
 }

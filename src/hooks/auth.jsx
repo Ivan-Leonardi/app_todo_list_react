@@ -5,14 +5,16 @@ export const AuthContext = createContext({});
 
 function AuthContextProvider({ children }) {
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true); 
 
   async function loginUser({ email, password }) {
     try {
       const response = await api.post("/sessions", { email, password });
+      
       const { user, token } = response.data;
 
       localStorage.setItem("@todoexperts:user", JSON.stringify(user));
-      localStorage.setItem("@todoexoerts:token", token);
+      localStorage.setItem("@todoexperts:token", token);
 
       api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -45,6 +47,7 @@ function AuthContextProvider({ children }) {
         user: JSON.parse(user),
       });
     }
+    setLoading(false)
   }, []);
 
   return (
@@ -53,6 +56,7 @@ function AuthContextProvider({ children }) {
         loginUser,
         logout,
         user: data.user,
+        loading,
       }}
     >
       {children}

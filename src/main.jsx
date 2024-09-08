@@ -4,14 +4,14 @@ import { ThemeProvider } from "styled-components";
 import { AuthContextProvider } from "./hooks/auth";
 import GlobalStyles from "./styles/global";
 import theme from "./styles/theme";
-import { Routes } from "./routes/index.jsx";
+import { AppRoutes } from "./routes/index.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <AuthContextProvider>
-        <Routes />
+        <AppRoutes />
       </AuthContextProvider>
     </ThemeProvider>
   </StrictMode>
