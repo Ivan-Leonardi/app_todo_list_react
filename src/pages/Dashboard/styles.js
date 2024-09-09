@@ -1,45 +1,45 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Container = styled.div` 
-background: ${({theme}) => theme.COLORS.GRAY_DARK};
+export const Container = styled.div`
+  background: ${({ theme }) => theme.COLORS.GRAY_DARK};
+  padding: 20px 0px;
 `;
 
 export const Header = styled.div`
-  border-bottom: 1px solid ${({theme}) => theme.COLORS.GRAY_LIGHT};  
-  padding: 12px 48px; 
-  display:flex;
+  border-bottom: 1px solid ${({ theme }) => theme.COLORS.GRAY_LIGHT};
+  padding: 12px 48px;
+  display: flex;
   align-items: center;
   justify-content: space-around;
   > div {
     > h3 {
-    font-size: 26px;
-    color: ${({theme}) => theme.COLORS.BACKGROUND};
+      font-size: 26px;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND};
+    }
+    > p {
+      font-size: 16px;
+      color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
+    }
   }
-  > p {
-    font-size: 16px;
-    color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
-  }
-  }
-  > div {    
+  > div {
     display: flex;
     align-items: center;
     gap: 4px;
     font-size: 18px;
-    color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
+    color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
+    cursor: pointer;
     svg {
-      color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
-      cursor: pointer;
-      
+      color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};      
     }
-  }   
+  }
 `;
 
 export const Titleh2 = styled.h2`
-text-align: center;
-padding: 26px 0px;
-font-size: 22px;
-font-weight: 400;
-color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
+  text-align: center;
+  padding: 26px 0px;
+  font-size: 22px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
 `;
 
 export const ContainerCards = styled.div`
@@ -47,9 +47,13 @@ export const ContainerCards = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 28px;
- 
   gap: 28px;
   margin-bottom: 36px;
+
+  @media (max-width: 820px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const ContainerForm = styled.div`
@@ -57,7 +61,7 @@ export const ContainerForm = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 48px;  
+  padding: 0 48px;
 `;
 
 export const ModalContainer = styled.div`
@@ -85,19 +89,9 @@ export const ModalContent = styled.div`
 
   > svg {
     position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  color: ${({theme}) => theme.COLORS.RED};
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: ${({ theme }) => theme.COLORS.RED};
   }
-`;
-
-export const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
 `;

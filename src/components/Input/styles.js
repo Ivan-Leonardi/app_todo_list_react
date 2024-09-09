@@ -4,8 +4,8 @@ export const Container = styled.div`
     width: 100%;
     display: flex;
     align-items: center;  
-    color: ${({theme}) => theme.COLORS.GRAY_300};
-    margin-bottom: 8px;
+    color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
+    margin-bottom: 12px;
     border-radius: 10px;
     border: 1px solid ${({theme}) => theme.COLORS.GRAY_LIGHT};
 
@@ -13,7 +13,7 @@ export const Container = styled.div`
         height: 56px;
         width: 100%;
         padding: 12px;
-        color: ${({theme}) => theme.GRAY_DARK};
+        color: ${({theme}) => theme.COLORS.BACKGROUND};
         background: transparent;
         border: 0;
 

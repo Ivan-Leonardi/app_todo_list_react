@@ -1,20 +1,18 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Form = styled.form`
-  display: flex;  
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-    padding: 12px;
+  padding: 12px;
   margin: 16px;
   border-radius: 12px;
-  border: 1px solid ${({theme}) => theme.COLORS.GRAY_LIGHT};
-  
- 
-  
+  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_LIGHT};
+
   gap: 20px;
 
-  >h2 {
-    color: ${({theme}) => theme.COLORS.BACKGROUND};
+  > h2 {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND};
     text-align: center;
   }
 `;
@@ -47,7 +45,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
- width: 100%;
+  width: 100%;
   padding: 12px 30px;
   border-radius: 8px;
   background-color: ${({ theme }) => theme.COLORS.GREEN};

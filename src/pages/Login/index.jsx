@@ -24,7 +24,6 @@ export function Login() {
           <span>Todo Experts</span>
         </h1>
         <p>Um jeito prático e simples de salvar suas tarefas do dia a dia</p>
-        <span>Faça seu login</span>
 
         <Input
           placeholder="Email"
@@ -39,7 +38,7 @@ export function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
-        <Button title="Enviar" onClick={handleLoginUser} />
+        <Button title="Entrar" onClick={handleLoginUser} />
 
         <p>
           Ainda não possui uma conta?

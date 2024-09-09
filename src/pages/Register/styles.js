@@ -3,7 +3,7 @@ import backgroundIMG from "../../assets/77993000_0d57_ghhp_230929.jpg";
 
 export const Container = styled.div`
   height: 100vh;
-  display: flex;   
+  display: flex;
 `;
 
 export const Form = styled.form`
@@ -16,28 +16,30 @@ export const Form = styled.form`
 
   > h1 {
     font-size: 36px;
-    color: ${({theme}) => theme.COLORS.GRAY_DARK};
+    color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
     margin-bottom: 12px;
 
     > span {
-        color: ${({theme}) => theme.COLORS.GREEN };
-        font-weight: 800;
+      color: ${({ theme }) => theme.COLORS.GREEN};
+      font-weight: 800;
     }
   }
 
   > p {
     font-size: 18px;
     font-weight: 400;
-    color: ${({theme}) => theme.COLORS.GRAY_DARK};
+    color: ${({ theme }) => theme.COLORS.GRAY_LIGHT};
     margin: 8px 0px 36px;
 
     > a {
-    color: ${({theme}) => theme.COLORS.GRAY_DARK};
-    font-weight: 500;
+      color: ${({ theme }) => theme.COLORS.BACKGROUND};
+      font-weight: 500;
+      margin-left: 3px;
+    }
   }
+  > span {
+    color: ${({ theme }) => theme.COLORS.BACKGROUND};
   }
-
-  
 `;
 
 export const BackgroundIMG = styled.div`

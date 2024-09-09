@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, ContainerCards, Header, Titleh2, ModalContainer, ModalContent, CloseButton } from "./styles";
+import { Container, ContainerCards, Header, Titleh2, ModalContainer, ModalContent } from "./styles";
 import { TaskCard } from "../../components/CardTask";
 import { TaskForm } from "../../components/FormTask";
 import { useAuth } from "../../hooks/auth";
@@ -12,7 +12,7 @@ import { CardAddNewTask } from "../../components/CardAddNewTask";
 export function Dashboard() {
   const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -40,7 +40,7 @@ export function Dashboard() {
             <h3>Olá {user.firstName}</h3>        
         </div>
         <div>
-          <LogOut size={26} />
+          <LogOut onClick={logout} size={26} />
           Sair
         </div>
               
@@ -55,11 +55,11 @@ export function Dashboard() {
         <ModalContainer>
           <ModalContent>
             <XIcon onClick={handleCloseModal} size={26} />
-            <TaskForm />
+            <TaskForm setTasks={setTasks} />
           </ModalContent>
         </ModalContainer>
       )}
-        <TaskCard status="Tarefas em progresso"count={tasksInProgress.length} />
+        <TaskCard status="Tarefas em progresso" count={tasksInProgress.length} />
         <TaskCard status="Tarefas concluídas" count={tasksCompleted.length} />
       </ContainerCards>
       

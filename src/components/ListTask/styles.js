@@ -5,7 +5,7 @@ export const TaskContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 0 12px;
+  padding: 0px 12px;
   gap: 20px;
   width: 100%;  
 `;
@@ -19,28 +19,39 @@ export const TaskItem = styled.div`
         return theme.COLORS.BLUE;
       case "pending":
       default:
-        return theme.COLORS.GRAY_LIGHT;
+        return theme.COLORS.YELLOW;
     }
   }};
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease;
-  height: 200px;
+  width: 300px;
+  
 
   section {
     display: flex;
     flex-direction: column;
     align-items: left;
-    gap: 60px;
+    gap: 50px;    
   }
 
   h4 {
     margin-bottom: 10px;
+    color: ${({theme}) => theme.COLORS.BACKGROUND};
+    font-size: 22px;
+    font-weight: 500;
   }
 
-  p {
-    margin: 0;
+  p {   
+    color: ${({theme}) => theme.COLORS.BACKGROUND};
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+
+  span {    
+    color: ${({theme}) => theme.COLORS.BACKGROUND};
+    font-size: 14px;
   }
 
   div:last-child {
@@ -48,6 +59,7 @@ export const TaskItem = styled.div`
     gap: 10px;
 
     svg {
+      color: ${({theme}) => theme.COLORS.BACKGROUND};
       cursor: pointer;
       transition: transform 0.3s ease;
 
