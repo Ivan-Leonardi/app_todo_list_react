@@ -1,11 +1,14 @@
 import { Form, Input, Button, FormGroup, Label } from "./syles";
 import { api } from "../../services/api";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function TaskForm({ setTasks }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
+
+  const navigate = useNavigate();
 
   async function handleAddTask() {    
     const newTask = {
@@ -20,6 +23,7 @@ export function TaskForm({ setTasks }) {
       setTitle("");
       setDescription("");
       setDueDate("");
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
     }
