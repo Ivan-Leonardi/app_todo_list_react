@@ -44,7 +44,7 @@ export function ListTasks({ tasks, setTasks }) {
           </TaskItem>
         ))
       ) : (
-        <p>No tasks available</p>
+        <p>Nenhuma tarefa encontrada!</p>
       )}
       {selectedTask && (
         <CardEditTask

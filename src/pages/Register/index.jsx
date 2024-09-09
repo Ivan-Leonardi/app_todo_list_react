@@ -3,7 +3,7 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { BackgroundIMG, Container, Form } from "./styles";
 import { UserRound, Mail, LockKeyhole } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import * as yup from "yup";
 
@@ -11,6 +11,8 @@ export function Register() {
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
   const schemaRegister = yup.object().shape({
     firstName: yup
@@ -45,6 +47,8 @@ export function Register() {
         })
         .then(() => {
           alert("Usuário cadatrado com sucesso!");
+
+          navigate("/");
 
           setFirstName("");
           setEmail("");

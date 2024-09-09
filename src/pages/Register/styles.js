@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundIMG from "../../assets/77993000_0d57_ghhp_230929.jpg";
+import backgroundIMG from "../../assets/bg-register.jpg";
 
 export const Container = styled.div`
   height: 100vh;
@@ -13,6 +13,10 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   text-align: center;
+
+  @media (max-width:820px) {
+    padding: 16px;
+  }
 
   > h1 {
     font-size: 36px;
@@ -46,4 +50,8 @@ export const BackgroundIMG = styled.div`
   flex: 1;
   background: url(${backgroundIMG}) no-repeat center center;
   background-size: cover;
+
+  @media (max-width: 820px) {
+    display: block;
+  }
 `;

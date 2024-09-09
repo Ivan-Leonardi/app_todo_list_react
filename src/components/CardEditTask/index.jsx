@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ModalContainer, ModalContent } from "./styles"; // Importar o estilo do modal
+import { ModalContainer, ModalContent } from "./styles";
 import { api } from "../../services/api";
 import { XIcon } from "lucide-react";
 
@@ -15,7 +15,7 @@ export function CardEditTask({ isOpen, onClose, task, setTasks }) {
           t.id === task.id ? { ...t, status, is_completed: isCompleted } : t
         )
       );
-      onClose(); // Fecha o modal após salvar
+      onClose();
     } catch (error) {
       console.error("Failed to update task:", error);
     }
