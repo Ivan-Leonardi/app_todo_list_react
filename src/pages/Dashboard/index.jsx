@@ -30,7 +30,7 @@ export function Dashboard() {
     }
 
     getTasks();
-  }, []);
+  }, [tasks]);
 
   const tasksPending = tasks.filter((task) => task.status === "pending");
   const tasksInProgress = tasks.filter((task) => task.status === "in_progress");
