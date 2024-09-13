@@ -30,6 +30,7 @@ export function Dashboard() {
     }
 
     getTasks();
+    
   }, []);
 
   const tasksPending = tasks.filter((task) => task.status === "pending");
