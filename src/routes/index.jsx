@@ -1,24 +1,15 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Dashboard } from "../pages/Dashboard"
-import { Register } from "../pages/Register";
-import { PrivateRoute } from "./private.routes";
-import { Login } from "../pages/Login";
+import { BrowserRouter } from "react-router-dom-v5-compat";
+import { useAuth } from "../hooks/auth";
 
-export function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/register" element={<Register />} />
-        <Route path="/" element={<Login />} />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard/>
-            </PrivateRoute>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-  );
+import { AppRoutes } from "./app.routes";
+import { AuthRoutes } from "./auth.routes";
+
+export function Routes() {
+    const { user } = useAuth();
+    
+    return (
+        <BrowserRouter>
+            { user ? <AppRoutes /> : <AuthRoutes />}
+        </BrowserRouter>
+    );
 }
