@@ -4,15 +4,38 @@ import { ThemeProvider } from "styled-components";
 import { AuthContextProvider } from "./hooks/auth";
 import GlobalStyles from "./styles/global";
 import theme from "./styles/theme";
-import { AuthRoutes } from "./routes/auth.routes";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { Dashboard } from "./pages/Dashboard";
+import { PrivateRoute } from "./routes/private-route";
+
+const router = createBrowserRouter([
+    {
+        path: "/dashboard",
+        element: (
+            <PrivateRoute>
+                <Dashboard />
+            </PrivateRoute>
+        ),
+    },
+    {
+        path: "/",
+        element: <Login />,
+    },
+    {
+        path: "/register",
+        element: <Register />,
+    },
+]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <AuthContextProvider>
-        <AuthRoutes/>
-      </AuthContextProvider>
-    </ThemeProvider>
-  </StrictMode>
+    <StrictMode>
+        <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <AuthContextProvider>
+                <RouterProvider router={router} />
+            </AuthContextProvider>
+        </ThemeProvider>
+    </StrictMode>
 );

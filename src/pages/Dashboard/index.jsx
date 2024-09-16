@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import {
-  Container,
-  ContainerCards,
-  Header,
-  Titleh2,
-  ModalContainer,
-  ModalContent,
+    Container,
+    ContainerCards,
+    Header,
+    Titleh2,
+    ModalContainer,
+    ModalContent,
 } from "./styles";
 import { TaskCard } from "../../components/CardTask";
 import { TaskForm } from "../../components/FormTask";
@@ -14,62 +14,81 @@ import { api } from "../../services/api";
 import { ListTasks } from "../../components/ListTask";
 import { LogOut, XIcon } from "lucide-react";
 import { CardAddNewTask } from "../../components/CardAddNewTask";
+import { useNavigate } from "react-router-dom";
 
 export function Dashboard() {
-  const [tasks, setTasks] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const { user, logout } = useAuth();
+    const [tasks, setTasks] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const { user, logout } = useAuth();
 
-  const handleOpenModal = () => setIsModalOpen(true);
-  const handleCloseModal = () => setIsModalOpen(false);
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    async function getTasks() {
-      const response = await api.get("/tasks");
-      setTasks(response.data);     
+    const handleOpenModal = () => setIsModalOpen(true);
+    const handleCloseModal = () => setIsModalOpen(false);
+
+    function handleLogout() {
+        logout();
+        navigate("/");
     }
 
-    getTasks();
-    
-  }, [tasks]);
+    useEffect(() => {
+        async function getTasks() {
+            const response = await api.get("/tasks");
+            setTasks(response.data);
+        }
 
-  const tasksPending = tasks.filter((task) => task.status === "pending");
-  const tasksInProgress = tasks.filter((task) => task.status === "in_progress");
-  const tasksCompleted = tasks.filter((task) => task.status === "completed");
+        getTasks();
+    }, []);
 
-  return (
-    <Container>
-      <Header>
-        <div>
-          <h3>Olá {user.firstName}</h3>
-        </div>
-        <div>
-          <LogOut onClick={logout} size={26} />
-          Sair
-        </div>
-      </Header>
+    const tasksPending = tasks.filter((task) => task.status === "pending");
+    const tasksInProgress = tasks.filter(
+        (task) => task.status === "in_progress"
+    );
+    const tasksCompleted = tasks.filter((task) => task.status === "completed");
 
-      <Titleh2>Gerencie suas tarefas diárias</Titleh2>
+    if (!user) {
+        return <div>Erro...Faça o login</div>;
+    }
 
-      <ContainerCards>
-        <CardAddNewTask onClick={handleOpenModal} />
-        <TaskCard status="Tarefas pendentes" count={tasksPending.length} />
-        {isModalOpen && (
-          <ModalContainer>
-            <ModalContent>
-              <XIcon onClick={handleCloseModal} size={26} />
-              <TaskForm setTasks={setTasks} />
-            </ModalContent>
-          </ModalContainer>
-        )}
-        <TaskCard
-          status="Tarefas em progresso"
-          count={tasksInProgress.length}
-        />
-        <TaskCard status="Tarefas concluídas" count={tasksCompleted.length} />
-      </ContainerCards>
+    return (
+        <Container>
+            <Header>
+                <div>
+                    <h3>Olá {user.firstName}</h3>
+                </div>
+                <div>
+                    <LogOut onClick={handleLogout} size={26} />
+                    Sair
+                </div>
+            </Header>
 
-      <ListTasks tasks={tasks} setTasks={setTasks} />
-    </Container>
-  );
+            <Titleh2>Gerencie suas tarefas diárias</Titleh2>
+
+            <ContainerCards>
+                <CardAddNewTask onClick={handleOpenModal} />
+                <TaskCard
+                    status="Tarefas pendentes"
+                    count={tasksPending.length}
+                />
+                {isModalOpen && (
+                    <ModalContainer>
+                        <ModalContent>
+                            <XIcon onClick={handleCloseModal} size={26} />
+                            <TaskForm setTasks={setTasks} />
+                        </ModalContent>
+                    </ModalContainer>
+                )}
+                <TaskCard
+                    status="Tarefas em progresso"
+                    count={tasksInProgress.length}
+                />
+                <TaskCard
+                    status="Tarefas concluídas"
+                    count={tasksCompleted.length}
+                />
+            </ContainerCards>
+
+            <ListTasks tasks={tasks} setTasks={setTasks} key={tasks.title} />
+        </Container>
+    );
 }

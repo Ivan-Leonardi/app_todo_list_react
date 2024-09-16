@@ -3,7 +3,7 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { BackgroundIMG, Container, Form } from "./styles";
 import { UserRound, Mail, LockKeyhole } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"
 import { api } from "../../services/api";
 import * as yup from "yup";
 
