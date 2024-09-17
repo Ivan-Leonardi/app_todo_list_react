@@ -33,8 +33,15 @@ export function Dashboard() {
 
     useEffect(() => {
         async function getTasks() {
-            const response = await api.get("/tasks");
-            setTasks(response.data);
+            try {
+                const response = await api.get("/tasks");
+                setTasks(response.data);
+            } catch (error) {
+                console.error(
+                    "Erro na requisição:",
+                    error.response?.data || error.message
+                );
+            }
         }
 
         getTasks();
@@ -47,7 +54,7 @@ export function Dashboard() {
     const tasksCompleted = tasks.filter((task) => task.status === "completed");
 
     if (!user) {
-        return <div>Erro...Faça o login</div>;
+        return <div>Erro... Faça o login</div>;
     }
 
     return (
@@ -88,7 +95,7 @@ export function Dashboard() {
                 />
             </ContainerCards>
 
-            <ListTasks tasks={tasks} setTasks={setTasks} key={tasks.title} />
+            <ListTasks tasks={tasks} setTasks={setTasks} />
         </Container>
     );
 }
