@@ -46,9 +46,9 @@ Como clonar o projeto
 git clone https://github.com/Ivan-Leonardi/app_todo_list_react.git
 ```
 
-<h3>Starting</h3>
+<h3>Start</h3>
 
-How to start your project
+Para iniciar o projeto
 
 ```bash
 cd frontend
