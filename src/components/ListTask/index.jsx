@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { TaskContainer, TaskItem } from "./styles";
 import { Trash, Pencil } from "lucide-react";
-import { format } from "date-fns";
-
 import { api } from "../../services/api";
 import { CardEditTask } from "../CardEditTask";
+import { format } from "date-fns";
 
 export function ListTasks({ tasks, setTasks }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,7 +36,13 @@ export function ListTasks({ tasks, setTasks }) {
                             <div>
                                 <h4>{task.title}</h4>
                                 <p>{task.description}</p>
-                                <span>Prazo: {format(new Date(task.due_date), "dd-MM-yyyy")}</span>
+                                <span>
+                                    Prazo:{" "}
+                                    {format(
+                                        new Date(task.due_date),
+                                        "dd/MM/yyyy"
+                                    )}
+                                </span>
                             </div>
                             <div>
                                 <Pencil onClick={() => openModal(task)} />
