@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CardNewTask = styled.div`
   height: 100px;
-  width: 230px;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,7 +1,8 @@
-import { Form, Input, Button, FormGroup, Label } from "./syles";
+import { Button, FormGroup, Label, Input, Form } from "./syles";
 import { api } from "../../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export function TaskForm({ setTasks }) {
     const [title, setTitle] = useState("");
@@ -10,8 +11,7 @@ export function TaskForm({ setTasks }) {
 
     const navigate = useNavigate();
 
-    async function handleAddTask() {       
-
+    async function handleAddTask() {
         const newTask = {
             title,
             description,
@@ -25,7 +25,7 @@ export function TaskForm({ setTasks }) {
             setDescription("");
             setDueDate("");
 
-            navigate("/dashboard");
+            toast.success("Tarefa criada com sucesso!");
         } catch (error) {
             console.error(error);
         }
@@ -65,6 +65,7 @@ export function TaskForm({ setTasks }) {
                     required
                 />
             </FormGroup>
+
             <Button type="button" onClick={handleAddTask}>
                 Adicionar tarefa
             </Button>

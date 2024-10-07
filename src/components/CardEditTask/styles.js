@@ -15,7 +15,7 @@ export const ModalContainer = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background-color: white;
+  background-color: ${({theme}) => theme.COLORS.GRAY_DARK};
   padding: 20px;
   border-radius: 10px;
   max-width: 400px;
@@ -31,6 +31,7 @@ export const ModalContent = styled.div`
     color: ${({ theme }) => theme.COLORS.RED};
   }
   > h4 {
+    color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
     font-size: 26px;
     font-weight: 400;
     margin-bottom: 18px;
@@ -40,6 +41,7 @@ export const ModalContent = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 18px;
+    color: ${({theme}) => theme.COLORS.GRAY_LIGHT};
     > label {
       > input {
         margin-right: 5px;

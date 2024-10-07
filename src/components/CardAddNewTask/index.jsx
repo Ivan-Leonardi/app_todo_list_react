@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 export function CardAddNewTask({ onClick }) {
     return (
         <CardNewTask onClick={onClick}>
-            <strong>Add nova tarefa</strong>
+            <strong>Criar tarefa</strong>
             <Plus />
         </CardNewTask>
     )

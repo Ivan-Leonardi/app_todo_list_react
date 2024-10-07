@@ -9,6 +9,7 @@ import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Dashboard } from "./pages/Dashboard";
 import { PrivateRoute } from "./routes/private-route";
+import { Toaster } from "sonner"
 
 const router = createBrowserRouter([
     {
@@ -37,5 +38,6 @@ createRoot(document.getElementById("root")).render(
                 <RouterProvider router={router} />
             </AuthContextProvider>
         </ThemeProvider>
+        <Toaster richColors/>
     </StrictMode>
 );

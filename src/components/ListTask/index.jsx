@@ -3,7 +3,8 @@ import { TaskContainer, TaskItem } from "./styles";
 import { Trash, Pencil } from "lucide-react";
 import { api } from "../../services/api";
 import { CardEditTask } from "../CardEditTask";
-import { format } from "date-fns";
+import dayjs from "dayjs";
+import { toast } from "sonner";
 
 export function ListTasks({ tasks, setTasks }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,6 +23,7 @@ export function ListTasks({ tasks, setTasks }) {
             setTasks((prevTasks) =>
                 prevTasks.filter((task) => task.id !== taskId)
             );
+            toast.success("Tarefa deletada!");            
         } catch (error) {
             console.error(error);
         }
@@ -29,39 +31,43 @@ export function ListTasks({ tasks, setTasks }) {
 
     return (
         <TaskContainer>
-            {tasks && tasks.length > 0 ? (
-                tasks.map((task) => (
-                    <TaskItem key={task.id} status={task.status}>
-                        <section>
-                            <div>
-                                <h4>{task.title}</h4>
-                                <p>{task.description}</p>
-                                <span>
-                                    Prazo:{" "}
-                                    {format(
-                                        new Date(task.due_date),
-                                        "dd/MM/yyyy"
-                                    )}
-                                </span>
-                            </div>
-                            <div>
-                                <Pencil onClick={() => openModal(task)} />
-                                <Trash onClick={() => deleteTask(task.id)} />
-                            </div>
-                        </section>
-                    </TaskItem>
-                ))
-            ) : (
-                <p>Nenhuma tarefa encontrada!</p>
-            )}
-            {selectedTask && (
-                <CardEditTask
-                    isOpen={isModalOpen}
-                    onClose={closeModal}
-                    task={selectedTask}
-                    setTasks={setTasks}
-                />
-            )}
+            <div>
+                {tasks && tasks.length > 0 ? (
+                    tasks.map((task) => (
+                        <TaskItem key={task.id} status={task.status}>
+                            <section>
+                                <div>
+                                    <h4>{task.title}</h4>
+                                    <p>{task.description}</p>
+                                    <span>
+                                        {" "}
+                                        Prazo:{" "}
+                                        {dayjs(task.due_date).format(
+                                            "DD-MM-YYYY"
+                                        )}
+                                    </span>
+                                </div>
+                                <div>
+                                    <Pencil onClick={() => openModal(task)} />
+                                    <Trash
+                                        onClick={() => deleteTask(task.id)}
+                                    />
+                                </div>
+                            </section>
+                        </TaskItem>
+                    ))
+                ) : (
+                    <p>Nenhuma tarefa encontrada!</p>
+                )}
+                {selectedTask && (
+                    <CardEditTask
+                        isOpen={isModalOpen}
+                        onClose={closeModal}
+                        task={selectedTask}
+                        setTasks={setTasks}
+                    />
+                )}
+            </div>
         </TaskContainer>
     );
 }
